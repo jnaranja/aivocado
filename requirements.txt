@@ -1,0 +1,8 @@
+anthropic>=0.18.0
+python-dotenv>=1.0.0
+
+# Raspberry Pi sensor libraries (optional - only needed for real hardware)
+# Uncomment these when running on Raspberry Pi:
+# adafruit-circuitpython-dht>=4.0.0
+# smbus2>=0.4.0
+# pyserial>=3.5
