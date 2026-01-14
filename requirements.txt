@@ -1,5 +1,6 @@
 anthropic>=0.18.0
 python-dotenv>=1.0.0
+httpx>=0.25.0
 
 # Raspberry Pi sensor libraries (optional - only needed for real hardware)
 # Uncomment these when running on Raspberry Pi:
