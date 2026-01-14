@@ -1,55 +1,47 @@
-# 🥑 AIVOCADO - AI-Monitored Avocado Farm
+# AIVOCADO
 
-A fun terminal-based LARP (Live Action Role Play) interface for monitoring an AI-powered avocado farm in real-time.
+Monitor your avocado plant growth using Raspberry Pi sensors and Claude AI.
 
-## Features
+## What it does
 
-- 🌳 **Real-time Tree Monitoring**: Track 12 avocado trees with individual health, water, and nutrient levels
-- 🤖 **AI Monitoring System**: Get AI-powered predictions, alerts, and insights
-- 📊 **Live Dashboard**: Beautiful terminal UI with real-time updates
-- 🚨 **Smart Alerts**: Automated notifications for critical conditions
-- 📈 **Predictive Analytics**: Harvest estimates and optimal timing predictions
-- 🌤️ **Weather Simulation**: Dynamic weather conditions affecting farm status
+Reads sensor data (temperature, humidity, CO2, light) and displays it in a terminal dashboard. Optionally sends readings to Claude for care recommendations.
 
-## Installation
+## Setup
 
-1. Install Python 3.7 or higher
-2. Install dependencies:
 ```bash
+python -m venv .venv
+source .venv/bin/activate
 pip install -r requirements.txt
+cp .env.example .env
+# add your ANTHROPIC_API_KEY to .env
 ```
 
 ## Usage
 
-Run the farm monitor:
 ```bash
-python avocado_farm.py
+# test with mock sensor data
+python main.py
+
+# use real sensors on raspberry pi
+python main.py --real
+
+# custom intervals
+python main.py --interval 5 --ai-interval 30
 ```
 
-Or make it executable and run directly:
-```bash
-chmod +x avocado_farm.py
-./avocado_farm.py
-```
+## Hardware
 
-## Controls
+For real sensor readings you need:
 
-- Press `Ctrl+C` to exit the monitoring system
+- DHT22 (temperature/humidity)
+- MH-Z19 (CO2)
+- BH1750 (light)
 
-## What You'll See
+See requirements.txt for the raspberry pi libraries.
 
-- **Tree Status Table**: Individual metrics for each avocado tree
-- **AI Dashboard**: Farm overview, environmental conditions, and predictions
-- **Alerts Panel**: Real-time notifications about farm conditions
-- **AI Insights**: Random AI-generated recommendations and analysis
+## Optimal ranges
 
-## Technical Details
-
-- Built with Python and the `rich` library for beautiful terminal output
-- Updates every 2 seconds with new farm data
-- Simulates realistic avocado growth patterns
-- AI monitoring includes health analysis, harvest predictions, and resource optimization
-
-Enjoy monitoring your virtual avocado farm! 🥑🌳
-
-
+- Temperature: 18-26C
+- Humidity: 50-70%
+- CO2: 400-800 ppm
+- Light: 2000-10000 lux
